@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study-Buddy – Post a Lab Partner Request</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .post-wrapper { max-width: 600px; margin: 0 auto; padding: 48px 24px 80px; }
+    .post-card { background: white; border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-md); border: 1.5px solid var(--gray-100); }
+    .post-heading { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--gray-900); margin-bottom: 6px; }
+    .post-sub { color: var(--gray-500); font-size: 0.9rem; margin-bottom: 28px; }
+    .review-row { display: flex; justify-content: space-between; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--gray-100); font-size: 0.92rem; }
+    .review-row:last-child { border-bottom: none; }
+    .review-label { color: var(--gray-500); font-size: 0.83rem; font-weight: 500; }
+    .review-value { font-weight: 600; color: var(--gray-900); }
+    .urgent-toggle { display: flex; align-items: center; gap: 12px; background: var(--amber-100); border: 1.5px solid var(--amber-500); border-radius: var(--radius-md); padding: 14px 18px; margin-top: 12px; cursor: pointer; }
+    .urgent-toggle input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; accent-color: var(--amber-500); }
+    .urgent-toggle-label { font-weight: 600; font-size: 0.9rem; color: var(--amber-700); }
+    .urgent-toggle-sub { font-size: 0.8rem; color: var(--amber-700); opacity: 0.8; }
+    .safety-notice { background: var(--blue-50); border: 1.5px solid var(--blue-200); border-radius: var(--radius-md); padding: 14px 18px; font-size: 0.85rem; color: var(--blue-700); margin-top: 16px; display: flex; gap: 10px; align-items: flex-start; }
+    .step-nav { display: flex; gap: 10px; margin-top: 28px; justify-content: space-between; }
+    .step-content { display: none; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html" aria-label="Home" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <div class="brand-icon" aria-hidden="true">🔬</div>
+    <span style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--blue-700);">Study-Buddy<span style="color:var(--blue-400)"> Lab</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Browse</a></li>
+    <li><a href="post.html" class="active" aria-current="page">Post Request</a></li>
+    <li><a href="my-requests.html">My Requests</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="post.html" class="nav-cta btn">+ Post a Request</a></li>
+  </ul>
+  <div class="nav-user">
+    <div class="nav-avatar" aria-hidden="true">TP</div>
+    <span>@tphiri</span>
+  </div>
+</nav>
+
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+<div class="page-wrapper">
+  <div class="post-wrapper">
+
+    <div style="margin-bottom:32px;">
+      <a href="index.html" class="btn btn-ghost btn-sm" style="margin-bottom:12px;padding-left:0;">← Back to Browse</a>
+      <h1 style="font-family:var(--font-display);font-size:1.9rem;font-weight:700;color:var(--gray-900);">Post a Lab Partner Request</h1>
+      <p style="color:var(--gray-500);margin-top:6px;">3 simple steps to broadcast your request to everyone on campus.</p>
+    </div>
+
+    <div class="steps" role="list" aria-label="Progress">
+      <div class="step active" role="listitem">
+        <div class="step-circle">1</div>
+        <span class="step-label">Module</span>
+      </div>
+      <div class="step" role="listitem">
+        <div class="step-circle">2</div>
+        <span class="step-label">Venue &amp; Time</span>
+      </div>
+      <div class="step" role="listitem">
+        <div class="step-circle">3</div>
+        <span class="step-label">Confirm</span>
+      </div>
+    </div>
+
+    <div class="post-card">
+
+      <!-- Step 1 -->
+      <div id="step1Content" class="step-content" style="display:block;">
+        <h2 class="post-heading">Step 1 of 3 — Module Details</h2>
+        <p class="post-sub">Select your module and enter the practical or lab section you need a partner for.</p>
+
+        <div class="form-group">
+          <label for="moduleSelect" class="form-label">Module Code <span style="color:var(--red-500)">*</span></label>
+          <select id="moduleSelect" class="form-control" aria-required="true">
+            <option value="">— Select your module —</option>
+            <option value="CMPG6221">CMPG6221 – Computer Networks</option>
+            <option value="HCIN6222">HCIN6222 – Human-Computer Interaction</option>
+            <option value="DISD6211">DISD6211 – Digital Systems Design</option>
+            <option value="MAST6111">MAST6111 – Mathematics &amp; Statistics</option>
+            <option value="PROG6221">PROG6221 – Programming</option>
+            <option value="INPB6211">INPB6211 – Information Processing</option>
+            <option value="BISY6211">BISY6211 – Business Information Systems</option>
+            <option value="SECU6221">SECU6221 – Cybersecurity</option>
+          </select>
+          <span class="form-hint">Only your enrolled modules are shown.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="sectionInput" class="form-label">Practical / Section <span style="color:var(--red-500)">*</span></label>
+          <input type="text" id="sectionInput" class="form-control"
+            placeholder="e.g. Practical 3, Lab Session 4, Workshop 2"
+            maxlength="60" aria-required="true" />
+          <span class="form-hint">Be specific so potential partners know exactly which session this is.</span>
+        </div>
+
+        <label class="urgent-toggle" for="urgentCheck">
+          <input type="checkbox" id="urgentCheck" />
+          <div>
+            <div class="urgent-toggle-label">⚡ Mark as Urgent</div>
+            <div class="urgent-toggle-sub">Puts your request at the top with an urgent badge. Use sparingly.</div>
+          </div>
+        </label>
+
+        <div class="step-nav">
+          <span></span>
+          <button class="btn btn-primary" onclick="nextStep(2)">Continue → Venue &amp; Time</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div id="step2Content" class="step-content">
+        <h2 class="post-heading">Step 2 of 3 — Venue &amp; Time</h2>
+        <p class="post-sub">Select a campus-verified venue and the time of your lab session.</p>
+
+        <div class="form-group">
+          <label for="venueSelect" class="form-label">Campus Venue <span style="color:var(--red-500)">*</span></label>
+          <select id="venueSelect" class="form-control" aria-required="true">
+            <option value="">— Select a venue —</option>
+            <option>Lab 2A – Main Building</option>
+            <option>Lab 3B – Tech Block</option>
+            <option>Lab 4 – Science Wing</option>
+            <option>Lab 1 – Engineering Block</option>
+            <option>Computer Lab 5 – Library</option>
+            <option>Lab 6C – Innovation Hub</option>
+          </select>
+          <span class="form-hint">Only verified campus locations are available.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="timeInput" class="form-label">Session Time <span style="color:var(--red-500)">*</span></label>
+          <input type="time" id="timeInput" class="form-control" aria-required="true" style="max-width:200px;" />
+          <span class="form-hint">When does your lab session start?</span>
+        </div>
+
+        <div class="safety-notice" role="note">
+          <span aria-hidden="true">🔒</span>
+          <div><strong>Safety constraint active:</strong> Only verified campus locations can be selected. Free-text venue entry is disabled to keep all students safe.</div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn btn-ghost" onclick="prevStep(1)">← Back</button>
+          <button class="btn btn-primary" onclick="nextStep(3)">Continue → Review</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div id="step3Content" class="step-content">
+        <h2 class="post-heading">Step 3 of 3 — Review &amp; Post</h2>
+        <p class="post-sub">Confirm your details before broadcasting to all students on the platform.</p>
+
+        <div style="background:var(--gray-50);border-radius:var(--radius-md);padding:6px 20px;margin-bottom:20px;">
+          <div class="review-row"><span class="review-label">Module</span><span class="review-value" id="reviewModule">—</span></div>
+          <div class="review-row"><span class="review-label">Section / Practical</span><span class="review-value" id="reviewSection">—</span></div>
+          <div class="review-row"><span class="review-label">Venue</span><span class="review-value" id="reviewVenue">—</span></div>
+          <div class="review-row"><span class="review-label">Time</span><span class="review-value" id="reviewTime">—</span></div>
+          <div class="review-row"><span class="review-label">Posted by</span><span class="review-value">@tphiri</span></div>
+          <div class="review-row"><span class="review-label">Status after posting</span><span class="badge badge-open"><span class="badge-dot"></span>Open</span></div>
+        </div>
+
+        <div style="background:var(--blue-50);border:1.5px solid var(--blue-200);border-radius:var(--radius-md);padding:14px 18px;font-size:0.85rem;color:var(--blue-700);">
+          ℹ️ Once posted your request is visible to all students instantly. You can withdraw it anytime from <a href="my-requests.html" style="text-decoration:underline;">My Requests</a>.
+        </div>
+
+        <div class="step-nav">
+          <button class="btn btn-ghost" onclick="prevStep(2)">← Back</button>
+          <button class="btn btn-primary btn-lg" onclick="submitRequest()">📢 Post My Request</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <strong>Study-Buddy Lab Matcher</strong> &mdash; Campus-verified venues only.
+  </footer>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => { updateStepUI(1); });
+</script>
+</body>
+</html>
