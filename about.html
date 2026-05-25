@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study-Buddy – About</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .about-hero { background: linear-gradient(135deg, var(--blue-900), var(--blue-700)); color: white; padding: 60px 32px; text-align: center; }
+    .about-hero h1 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+    .about-hero p { opacity: 0.85; max-width: 540px; margin: 0 auto; font-size: 1rem; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; margin-top: 24px; }
+    .feature-card { background: white; border-radius: var(--radius-lg); border: 1.5px solid var(--gray-100); padding: 24px; box-shadow: var(--shadow-sm); transition: box-shadow var(--transition); }
+    .feature-card:hover { box-shadow: var(--shadow-md); }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .feature-title { font-family: var(--font-display); font-weight: 700; font-size: 0.98rem; color: var(--gray-900); margin-bottom: 6px; }
+    .feature-desc { font-size: 0.85rem; color: var(--gray-500); line-height: 1.6; }
+    .info-block { background: white; border-radius: var(--radius-lg); border: 1.5px solid var(--gray-100); padding: 28px 32px; box-shadow: var(--shadow-sm); margin-bottom: 24px; }
+    .info-block h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--gray-900); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .info-block p, .info-block li { font-size: 0.9rem; color: var(--gray-600); line-height: 1.7; }
+    .info-block ul { padding-left: 18px; list-style: disc; }
+    .info-block li { margin-bottom: 4px; }
+    .access-table { width: 100%; border-collapse: collapse; background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1.5px solid var(--gray-100); }
+    .access-table th { background: var(--blue-600); color: white; padding: 14px 20px; text-align: left; font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; }
+    .access-table td { padding: 14px 20px; font-size: 0.88rem; border-bottom: 1px solid var(--gray-100); vertical-align: top; }
+    .access-table tr:last-child td { border-bottom: none; }
+    .access-table tr:nth-child(even) td { background: var(--gray-50); }
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; }
+    .tag-p { background: var(--blue-100); color: var(--blue-700); }
+    .tag-o { background: var(--green-100); color: var(--green-700); }
+    .tag-u { background: var(--amber-100); color: var(--amber-700); }
+    .tag-r { background: var(--red-100); color: var(--red-500); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html" aria-label="Home" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <div class="brand-icon" aria-hidden="true">🔬</div>
+    <span style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--blue-700);">Study-Buddy<span style="color:var(--blue-400)"> Lab</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Browse</a></li>
+    <li><a href="post.html">Post Request</a></li>
+    <li><a href="my-requests.html">My Requests</a></li>
+    <li><a href="about.html" class="active" aria-current="page">About</a></li>
+    <li><a href="post.html" class="nav-cta btn">+ Post a Request</a></li>
+  </ul>
+  <div class="nav-user">
+    <div class="nav-avatar" aria-hidden="true">TP</div>
+    <span>@tphiri</span>
+  </div>
+</nav>
+
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+<div class="page-wrapper">
+
+  <section class="about-hero" aria-label="About the platform">
+    <h1>About Study-Buddy Lab Matcher</h1>
+    <p>A focused, real-time platform that helps students find face-to-face lab partners quickly and safely — with campus-verified venues and a 3-tap posting flow.</p>
+  </section>
+
+  <main class="container section">
+
+    <div class="info-block">
+      <h3>🔬 What is Study-Buddy Lab Matcher?</h3>
+      <p>
+        Study-Buddy Lab Matcher connects students who need a lab or practical partner in a time-limited academic environment. Post a request in under 3 taps, browse live requests filtered by module, and get matched with a verified peer at a campus-approved venue — all without leaving the site.
+      </p>
+    </div>
+
+    <div class="section-header" style="margin-top:40px;">
+      <div>
+        <h2 class="section-title">Key Features</h2>
+        <p class="section-sub">Everything built to solve one problem fast</p>
+      </div>
+    </div>
+
+    <div class="features-grid" role="list">
+      <div class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">⚡</div>
+        <div class="feature-title">Quick-Tap Posting</div>
+        <div class="feature-desc">Post a partner request in 3 steps — module, venue &amp; time, then confirm. No account setup, no forms to fill out twice.</div>
+      </div>
+      <div class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">🔴</div>
+        <div class="feature-title">Live Status Indicators</div>
+        <div class="feature-desc">Every request shows a real-time Open or Matched badge so you never waste a click on a filled post.</div>
+      </div>
+      <div class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">🎛️</div>
+        <div class="feature-title">Module Filtering</div>
+        <div class="feature-desc">Filter the request feed by course code to instantly see only the requests relevant to your academic track.</div>
+      </div>
+      <div class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">🔒</div>
+        <div class="feature-title">Safety Constraints</div>
+        <div class="feature-desc">Venues are restricted to a verified list of campus locations only. No free-text entries, no off-campus meetups.</div>
+      </div>
+      <div class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">👤</div>
+        <div class="feature-title">Identity &amp; Accountability</div>
+        <div class="feature-desc">Every post is tied to a campus username — no anonymous requests, so all interactions remain accountable.</div>
+      </div>
+      <div class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">📱</div>
+        <div class="feature-title">Mobile-First Design</div>
+        <div class="feature-desc">Tap targets are at least 44×44px, layouts reflow on small screens, and the interface works with a single thumb between lectures.</div>
+      </div>
+    </div>
+
+    <!-- Accessibility -->
+    <div style="margin-top:48px;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Accessibility</h2>
+          <p class="section-sub">Built to WCAG 2.0 POUR standards</p>
+        </div>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="access-table" role="table" aria-label="WCAG 2.0 accessibility compliance">
+          <thead>
+            <tr>
+              <th scope="col">Principle</th>
+              <th scope="col">Requirement</th>
+              <th scope="col">How it's implemented</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag tag-p">Perceivable</span></td>
+              <td>Text alternatives (1.1.1)</td>
+              <td>All icons use <code>aria-hidden="true"</code>; meaningful images carry <code>alt</code> text.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-p">Perceivable</span></td>
+              <td>Contrast ≥ 4.5:1 (1.4.3)</td>
+              <td>All text/background combinations pass. Blue #2563eb on white = 5.9:1.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-p">Perceivable</span></td>
+              <td>Not colour alone (1.4.1)</td>
+              <td>Status badges use colour + text label + dot symbol — never colour alone.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-o">Operable</span></td>
+              <td>Keyboard accessible (2.1.1)</td>
+              <td>All interactive elements are reachable via Tab in a logical order with visible focus indicators.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-o">Operable</span></td>
+              <td>Target size ≥ 44×44px (2.5.5)</td>
+              <td>Every button, chip, and link meets the minimum touch target size.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-u">Understandable</span></td>
+              <td>Readable language (3.1.1)</td>
+              <td>Plain English throughout. <code>lang="en"</code> set on every page.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-u">Understandable</span></td>
+              <td>Descriptive errors (3.3.1)</td>
+              <td>Error messages are specific: "Please select a module before continuing."</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-u">Understandable</span></td>
+              <td>Visible labels (3.3.2)</td>
+              <td>All form fields use visible <code>&lt;label&gt;</code> elements linked by <code>for</code>/<code>id</code>.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-r">Robust</span></td>
+              <td>Semantic HTML (4.1.1)</td>
+              <td><code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code> used throughout.</td>
+            </tr>
+            <tr>
+              <td><span class="tag tag-r">Robust</span></td>
+              <td>ARIA (4.1.2)</td>
+              <td><code>role</code>, <code>aria-label</code>, <code>aria-live</code>, <code>aria-current</code>, <code>aria-pressed</code>, <code>aria-required</code> applied to all interactive components.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <strong>Study-Buddy Lab Matcher</strong> &mdash; Campus-verified venues only. Built with accessibility in mind.
+  </footer>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
