@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study-Buddy Lab Matcher – Browse Requests</title>
+  <meta name="description" content="Find a lab partner in real time. Browse open partner requests by module and section." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html" aria-label="Home" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+    <div class="brand-icon" aria-hidden="true">🔬</div>
+    <span style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--blue-700);">Study-Buddy<span style="color:var(--blue-400)"> Lab</span></span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="index.html" class="active" aria-current="page">Browse</a></li>
+    <li><a href="post.html">Post Request</a></li>
+    <li><a href="my-requests.html">My Requests</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="post.html" class="nav-cta btn">+ Post a Request</a></li>
+  </ul>
+  <div class="nav-user" aria-label="Logged in as tphiri">
+    <div class="nav-avatar" aria-hidden="true">TP</div>
+    <span>@tphiri</span>
+  </div>
+</nav>
+
+<div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<div class="page-wrapper">
+  <section class="hero" aria-label="Site introduction">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot" style="background:var(--green-500);"></span>
+        Live Platform
+      </div>
+      <h1>Find a <span>Lab Partner</span><br/>in Under 3 Taps</h1>
+      <p>Real-time matching for students who need face-to-face lab and practical partners. Fast, safe, and campus-verified.</p>
+      <div class="hero-actions">
+        <a href="post.html" class="btn btn-white btn-lg">📢 Post a Request</a>
+        <a href="#requests" class="btn btn-lg" style="border:2px solid rgba(255,255,255,0.5);color:white;background:transparent;">Browse Open Requests</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container section" id="requests">
+
+    <div class="stats-bar" role="region" aria-label="Platform statistics">
+      <div class="stat-card">
+        <div class="stat-value" id="statOpen">—</div>
+        <div class="stat-label">Open Requests</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statMatched">—</div>
+        <div class="stat-label">Matched Today</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="statTotal">—</div>
+        <div class="stat-label">Total Posts</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--green-500);">6</div>
+        <div class="stat-label">Campus Venues</div>
+      </div>
+    </div>
+
+    <div class="filter-bar" role="search" aria-label="Filter by module">
+      <span class="filter-label">Filter by Module:</span>
+      <div class="filter-chips" role="group" aria-label="Module filters">
+        <button class="chip active" data-module="All" onclick="setFilter('All')" aria-pressed="true">All Modules</button>
+        <button class="chip" data-module="PROG6221" onclick="setFilter('PROG6221')" aria-pressed="false">PROG6221</button>
+        <button class="chip" data-module="HCIN6222" onclick="setFilter('HCIN6222')" aria-pressed="false">HCIN6222</button>
+        <button class="chip" data-module="CMPG6221" onclick="setFilter('CMPG6221')" aria-pressed="false">CMPG6221</button>
+        <button class="chip" data-module="MAST6111" onclick="setFilter('MAST6111')" aria-pressed="false">MAST6111</button>
+        <button class="chip" data-module="DISD6211" onclick="setFilter('DISD6211')" aria-pressed="false">DISD6211</button>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Open Partner Requests</h2>
+        <p class="section-sub">Click <strong>Match Me</strong> to connect with a student needing a lab partner</p>
+      </div>
+      <a href="post.html" class="btn btn-primary">+ Post a Request</a>
+    </div>
+
+    <div id="requestList" role="list" aria-label="Lab partner requests" style="display:flex;flex-direction:column;gap:12px;"></div>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <strong>Study-Buddy Lab Matcher</strong> &mdash; Campus-verified venues only. Your identity is kept accountable and safe.
+  </footer>
+</div>
+
+<div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+  <div class="modal">
+    <div class="success-screen">
+      <div class="success-icon" aria-hidden="true">🎉</div>
+      <h2 id="successTitle">You're all set!</h2>
+      <p>
+        You've been matched for
+        <strong id="matchedModule"></strong> – <strong id="matchedSection"></strong>.
+        Head to <strong id="matchedVenue"></strong> at your scheduled time.
+      </p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="closeModal('successModal')">Great, thanks!</button>
+        <a href="my-requests.html" class="btn btn-outline">View My Requests</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderRequests('All');
+    updateStats();
+  });
+</script>
+</body>
+</html>
