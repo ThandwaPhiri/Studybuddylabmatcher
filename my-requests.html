@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Study-Buddy – My Requests</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     .my-card { background: white; border-radius: var(--radius-lg); border: 1.5px solid var(--gray-100); overflow: hidden; box-shadow: var(--shadow-sm); }
     .my-card-header { padding: 18px 24px; border-bottom: 1.5px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
@@ -13,8 +13,8 @@
     .history-item:last-child { border-bottom: none; }
     .history-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
     .history-dot.matched { background: var(--green-500); }
-    .profile-banner { background: linear-gradient(135deg, var(--blue-700), var(--blue-500)); border-radius: var(--radius-xl); padding: 32px 36px; color: white; display: flex; align-items: center; gap: 24px; margin-bottom: 32px; flex-wrap: wrap; }
-    .profile-avatar { width: 72px; height: 72px; background: rgba(255,255,255,0.2); border: 3px solid rgba(255,255,255,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; flex-shrink: 0; }
+    .profile-banner { background: linear-gradient(135deg, var(--blue-700), var(--blue-500)); border-radius: var(--radius-xl); padding: 32px 36px; color: white; display: flex; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .profile-avatar { width: 72px; height: 72px; background: rgba(255,255,255,0.2); border: 3px solid rgba(255,255,255,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; flex-shrink: 0; }
     .profile-info h2 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
     .profile-info p { opacity: 0.8; font-size: 0.9rem; }
     .profile-stats { display: flex; gap: 28px; margin-left: auto; flex-wrap: wrap; }
@@ -22,8 +22,8 @@
     .profile-stat-value { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; }
     .profile-stat-label { font-size: 0.78rem; opacity: 0.75; }
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .active-request-card { background: white; border: 1.5px solid var(--blue-200); border-radius: var(--radius-lg); padding: 20px 22px; box-shadow: 0 2px 12px rgba(37,99,235,0.08); transition: box-shadow var(--transition); }
-    .active-module-tag { display: inline-block; background: var(--blue-500); color: white; font-family: var(--font-display); font-weight: 700; font-size: 0.85rem; padding: 4px 12px; border-radius: 100px; margin-bottom: 10px; }
+    .active-request-card { background: white; border: 1.5px solid var(--blue-200); border-radius: var(--radius-lg); padding: 20px 22px; box-shadow: 0 2px 12px rgba(37,99,235,0.08); }
+    .active-module-tag { display: inline-block; background: var(--blue-500); color: white; font-family: var(--font-display); font-weight: 700; font-size: 0.85rem; padding: 4px 12px; border-radius: 100px; }
     .meta-row { display: flex; flex-direction: column; gap: 6px; margin: 12px 0; }
     .meta-item { font-size: 0.88rem; color: var(--gray-600); display: flex; gap: 8px; align-items: center; }
     @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } .profile-banner { flex-direction: column; } .profile-stats { margin-left: 0; } }
@@ -170,13 +170,13 @@
   </footer>
 </div>
 
-<script src="js/app.js"></script>
+<script src="app.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const myReqs = requests.filter(r => r.username === CURRENT_USER.username);
     const list = document.getElementById('myRequestList');
     if (!myReqs.length) {
-      list.innerHTML = `<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">No active requests</div><p>You haven't posted anything yet. <a href="post.html" style="color:var(--blue-500);">Post one now</a>.</p></div>`;
+      list.innerHTML = `<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">No active requests</div><p>You haven't posted anything yet. <a href="post.html" style="text-decoration:underline;">Post your first request</a>.</p></div>`;
       return;
     }
     list.innerHTML = myReqs.map(r => `
